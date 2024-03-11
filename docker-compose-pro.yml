@@ -1,0 +1,28 @@
+version: "3"
+services:
+    fast:
+        image: sloppynetworks/fastapi
+        ports: 
+            - 80:8000 
+        environment:
+            - DATABASE_USERNAME=${DATABASE_USERNAME}
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+            - DATABASE_PORT=${DATABASE_PORT}
+            - DATABASE_HOSTNAME=db  # Assuming your PostgreSQL service is named "db" in your Docker Compose network
+            - SECRET_KEY=${SECRET_KEY}
+            - ALGORITHM=${ALGORITHM}
+            - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+        depends_on:
+            - db
+
+    db:
+        image: postgres
+        environment:
+            - POSTGRES_USER=${DATABASE_USERNAME}
+            - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+            - POSTGRES_DB=${DATABASE_NAME}
+        ports:
+            - "1435:5432"
+
+    
