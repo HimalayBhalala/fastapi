@@ -1,0 +1,12 @@
+name: Build and Deploye Code
+
+on: [push,pull_request]
+
+jobs:
+  job1:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Pull a git repositiory
+        uses: actions/checkout@v2
+      - name: say hi to himlay
+        run: echo "hello himalay"
