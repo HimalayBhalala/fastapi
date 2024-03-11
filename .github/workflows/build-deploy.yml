@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: Pull a git repositiory
         uses: actions/checkout@v2
-      - name: say hi to himlay
+      - name: say hi to himalay
         run: echo "hello himalay"
